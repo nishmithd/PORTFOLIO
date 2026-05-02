@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nishmith D — Mechanical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080c10;
+    --surface: #0d1117;
+    --surface2: #141b24;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #7fff6b;
+    --text: #e8edf2;
+    --muted: #6b7a8d;
+    --heading: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Restore normal cursor on touch devices */
+  @media (hover: none) {
+    body, a, button, .tile, .contact-link, .btn-primary, .btn-outline,
+    .badge-slot, .project-card, .about-pill { cursor: auto !important; }
+    .cursor, .cursor-follower { display: none !important; }
+  }
+  
+  .badge-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.badge-slot:hover .badge-img {
+  transform: scale(1.08);
+}
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: screen;
+  }
+  .cursor-follower {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(0,212,255,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
+    mix-blend-mode: screen;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 900;
+    padding: 24px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(20px);
+    background: rgba(8,12,16,0.7);
+    border-bottom: 1px solid var(--border);
+    animation: slideDown 0.8s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--heading);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    position: relative;
+  }
+
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 140px 60px 120px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 0.95;
+    color: var(--heading);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+  .hero-name .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  }
+
+  .hero-desc {
+    margin-top: 28px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 420px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 16px;
+    margin-top: 44px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover::before { transform: scaleX(1); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--bg); }
+
+  .btn-outline {
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.25s ease;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.6s forwards;
+  }
+
+  /* PHOTO PLACEHOLDER */
+  .photo-frame {
+    width: 340px; height: 420px;
+    position: relative;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from 0deg, transparent 60%, rgba(0,212,255,0.15) 80%, transparent 100%);
+    animation: spin 6s linear infinite;
+  }
+  .photo-placeholder-icon {
+    font-size: 2.5rem;
+    z-index: 1;
+  }
+  .photo-placeholder-text { z-index: 1; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 16px;
+    right: -16px; bottom: -16px;
+    border: 1px solid rgba(0,212,255,0.2);
+    z-index: -1;
+  }
+
+  .hero-stat-strip {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: repeat(3,1fr);
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.1s forwards;
+  }
+  .hero-stat {
+    padding: 28px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--heading);
+  }
+  .hero-stat-num span { color: var(--accent); }
+  .hero-stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SECTIONS COMMON */
+  section { padding: 120px 60px; position: relative; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .about-left { }
+
+  .about-text {
+    margin-top: 28px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .about-highlights {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .about-highlight {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    transition: border-color 0.25s;
+  }
+  .about-highlight:hover { border-color: rgba(0,212,255,0.3); }
+  .about-highlight-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--heading);
+  }
+  .about-highlight-val span { color: var(--accent); }
+  .about-highlight-key {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* big quote / tagline in about-right */
+  .about-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .about-quote em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,212,255,0.5);
+  }
+
+  .about-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+  align-items: flex-start;
+}
+  .about-pill {
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all 0.2s;
+  white-space: nowrap;
+  max-width: 100%;
+}
+  .about-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* EXPERIENCE — standalone section */
+  #experience {
+    background: var(--bg);
+    padding: 110px 60px;
+  }
+
+  .exp-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 70px;
+  }
+  .exp-header-right {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    transition: all 0.35s ease;
+    align-items: start;
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(0,212,255,0.04);
+    transition: width 0.4s ease;
+  }
+  .exp-item:hover::before { width: 100%; }
+
+  .exp-left { }
+  .exp-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .exp-type {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .exp-middle { }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .exp-company {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .exp-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 520px;
+  }
+
+  .exp-right {
+    text-align: right;
+    padding-top: 4px;
+  }
+  .exp-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    transition: color 0.35s;
+    user-select: none;
+  }
+  .exp-item:hover .exp-num { color: rgba(0,212,255,0.08); }
+
+  /* SKILLS — two sub-sections */
+  .skills-section {
+    background: var(--bg);
+    padding: 100px 60px;
+  }
+  .skills-section + .skills-section {
+    background: var(--surface);
+    padding-top: 80px;
+  }
+
+  .skills-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .skills-section-header p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 340px;
+    text-align: right;
+  }
+
+  /* IMAGE TILE GRID */
+  .tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  .tile {
+    position: relative;
+    aspect-ratio: 4/3;
+    min-height: 160px;
+    overflow: hidden;
+    cursor: none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+  }
+
+  /* Image placeholder — swap with real <img> */
+  .tile-img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .tile:hover .tile-img { transform: scale(1.06); }
+
+  /* Placeholder shown when no real image yet */
+  .tile-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    background: var(--surface2);
+    transition: background 0.3s;
+  }
+  .tile:hover .tile-placeholder { background: var(--surface); }
+
+  .tile-placeholder-icon {
+    font-size: 2.2rem;
+    opacity: 0.25;
+    transition: opacity 0.3s;
+  }
+  .tile:hover .tile-placeholder-icon { opacity: 0.45; }
+
+  .tile-placeholder-hint {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(107,122,141,0.35);
+  }
+
+  /* Overlay label — always visible at bottom */
+  .tile-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 14px 18px 16px;
+    background: linear-gradient(to top, rgba(8,12,16,0.92) 0%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    transform: translateY(4px);
+    transition: transform 0.35s ease;
+  }
+  .tile:hover .tile-overlay { transform: translateY(0); }
+
+  .tile-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--heading);
+    letter-spacing: 0.01em;
+  }
+
+  .tile-arrow {
+    font-size: 0.9rem;
+    color: var(--accent);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: all 0.3s ease;
+  }
+  .tile:hover .tile-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Top accent line on hover */
+  .tile::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .tile:hover::after { transform: scaleX(1); }
+
+  /* BADGES */
+  #badges { background: var(--surface); overflow: hidden; }
+
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .badge-slot {
+    aspect-ratio: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: none;
+  }
+  .badge-slot::before {
+    content: '';
+    position: absolute; inset: -50%;
+    background: conic-gradient(from 0deg, transparent 70%, rgba(0,212,255,0.1) 90%, transparent 100%);
+    animation: spin 8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .badge-slot:hover::before { opacity: 1; }
+  .badge-slot:hover { border-color: rgba(0,212,255,0.3); }
+
+  .badge-icon {
+    font-size: 2.5rem;
+    filter: grayscale(0.6);
+    transition: filter 0.3s;
+  }
+  .badge-slot:hover .badge-icon { filter: grayscale(0); }
+
+  .badge-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    padding: 0 16px;
+    transition: color 0.3s;
+  }
+  .badge-slot:hover .badge-label { color: var(--accent); }
+
+  .badge-placeholder-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(107,122,141,0.4);
+    position: absolute;
+    bottom: 14px;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg); }
+
+  .projects-intro {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+  .projects-intro p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 16px;
+    max-width: 400px;
+  }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+    transition: border-color 0.3s;
+  }
+  .project-card:hover { border-color: rgba(0,212,255,0.3); }
+
+/* PROJECT IMAGE SLIDER */
+.project-slider {
+  width: 100%;
+  height: clamp(220px, 42vw, 480px);
+  position: relative;
+  overflow: hidden;
+  background: var(--surface2);
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.slider-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Placeholder slide (no image yet) */
+.slider-slide-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--surface2);
+  color: var(--muted);
+}
+.slider-slide-placeholder span:first-child { font-size: 2.5rem; opacity: 0.25; }
+.slider-slide-placeholder span:last-child {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+/* Prev / Next arrow buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px;
+  background: rgba(8,12,16,0.7);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+  opacity: 0;
+  backdrop-filter: blur(6px);
+}
+.project-slider:hover .slider-btn { opacity: 1; }
+.slider-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.slider-btn.prev { left: 12px; }
+.slider-btn.next { right: 12px; }
+.slider-btn:disabled { opacity: 0 !important; pointer-events: none; }
+
+/* Dot indicators */
+.slider-dots {
+  position: absolute;
+  bottom: 12px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px;
+  z-index: 10;
+}
+.slider-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  border: none;
+  padding: 0;
+}
+.slider-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* Slide counter badge */
+.slider-counter {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.5);
+  background: rgba(8,12,16,0.6);
+  padding: 4px 9px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Mobile touch swipe — no arrows needed, dots stay */
+@media (max-width: 768px) {
+  .project-slider { height: clamp(200px, 55vw, 320px); }
+  .slider-btn { display: none; }
+  .slider-dots { opacity: 1; }
+}
+
+  .project-img {
+    height: 200px;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .project-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--surface));
+  }
+
+  .project-img-placeholder {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 10px;
+  }
+  .project-img-icon { font-size: 2.5rem; opacity: 0.3; }
+
+  .project-body { padding: 24px 28px 32px; }
+
+  .project-category {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 10px;
+  }
+  .project-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .project-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .project-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+  }
+  .project-arrow {
+    color: var(--accent);
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+  }
+  .project-card:hover .project-arrow { transform: translate(3px,-3px); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-left {}
+  .contact-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.1;
+    margin-top: 20px;
+  }
+  .contact-tagline .accent { color: var(--accent); }
+  .contact-sub {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .contact-links {
+    margin-top: 40px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none;
+    color: var(--text);
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+    cursor: none;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateX(6px);
+  }
+  .contact-link-icon { font-size: 1.2rem; }
+  .contact-link-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .contact-link-value { margin-left: auto; font-size: 0.85rem; color: var(--muted); }
+
+  .contact-right { }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-input, .form-textarea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.25s;
+    resize: none;
+    cursor: text;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { height: 130px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    padding: 40px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--heading);
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .footer-socials { display: flex; gap: 20px; }
+  .footer-social {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    cursor: none;
+  }
+  .footer-social:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* HAMBURGER — mobile only */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 69px; left: 0; right: 0;
+    background: rgba(8,12,16,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 20px 28px 28px;
+    gap: 0;
+    z-index: 899;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:hover { color: var(--accent); }
+
+@media (max-width: 1200px) {
+  #hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+  }
+
+  .hero-left {
+    padding: 140px 40px 60px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-tag {
+    justify-content: center;
+  }
+
+  .hero-desc {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-right {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+
+  .photo-frame {
+    width: min(70vw, 340px);
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero-stat-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+  /* TABLET — 768px to 900px */
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    section { padding: 72px 28px; }
+
+    #hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      min-height: 100svh;
+    }
+    .hero-left { padding: 120px 28px 60px; }
+    .hero-right { display: none; }
+    .hero-stat-strip { grid-template-columns: repeat(3,1fr); }
+    .hero-stat { padding: 20px 24px; }
+
+    #about { grid-template-columns: 1fr; gap: 48px; }
+    .about-highlights { grid-template-columns: 1fr 1fr; }
+    .about-quote { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+
+    #experience { padding: 72px 28px; }
+    .exp-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
+    .exp-item { grid-template-columns: 100px 1fr; gap: 24px; padding: 28px 0; }
+    .exp-right { display: none; }
+    .exp-desc { max-width: 100%; }
+
+    .skills-section { padding: 72px 28px; }
+    .skills-section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .skills-section-header p { text-align: left; max-width: 100%; }
+    .tile-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .badges-grid { grid-template-columns: repeat(2, 1fr); }
+
+    #projects { padding: 72px 28px; }
+    .projects-intro { grid-template-columns: 1fr; gap: 0; }
+    .projects-grid { grid-template-columns: 1fr; }
+
+    #contact { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
+    .contact-link-value { display: none; }
+
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 28px; }
+  }
+
+  /* MOBILE — up to 480px */
+  @media (max-width: 480px) {
+    nav { padding: 16px 20px; }
+    section { padding: 60px 20px; }
+
+    .hero-left { padding: 100px 20px 50px; }
+    .hero-name { font-size: clamp(2.8rem, 14vw, 4rem); }
+    .hero-stat-strip { grid-template-columns: 1fr 1fr 1fr; }
+    .hero-stat { padding: 16px 12px; }
+    .hero-stat-num { font-size: 1.4rem; }
+    .hero-stat-label { font-size: 0.62rem; }
+    .hero-ctas { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+
+    #about { padding: 60px 20px; }
+    .about-highlights { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+    #experience { padding: 60px 20px; }
+    .exp-item { grid-template-columns: 1fr; gap: 10px; }
+    .exp-left { display: flex; align-items: center; gap: 12px; }
+
+    .skills-section { padding: 60px 20px; }
+    .tile-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+    .tile { min-height: 130px; }
+    .tile-label { font-size: 0.75rem; }
+
+    .badges-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+    #projects { padding: 60px 20px; }
+    .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+
+    #contact { padding: 60px 20px; gap: 40px; }
+    .contact-tagline { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+
+    footer { padding: 28px 20px; gap: 14px; }
+    .footer-copy { font-size: 0.7rem; }
+
+    .nav-mobile-menu { top: 61px; }
+  }
+  
+/* HERO SECTION FULL RESPONSIVE FIX */
+.hero,
+.hero-section,
+.intro-section,
+.first-section {
+  display: flex;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  padding: 80px 5%;
+  overflow: hidden;
+}
+
+/* TEXT SIDE */
+.hero-text,
+.intro-text,
+.hero-content {
+  flex: 1 1 500px;
+  min-width: 280px;
+  max-width: 100%;
+}
+
+.hero-text h1,
+.intro-text h1,
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem); /* Auto scales */
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+.hero-text p,
+.intro-text p,
+.hero-content p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+/* PROFILE IMAGE SIDE */
+.hero-image,1983
+.profile-image,
+.intro-image {
+  flex: 1 1 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+  max-width: 100%;
+}
+
+.hero-image img,
+.profile-image img,
+.intro-image img {
+  width: min(100%, 380px);
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+/* TABLET */
+@media (max-width: 992px) {
+  .hero,
+  .hero-section,
+  .intro-section,
+  .first-section {
+    flex-direction: column-reverse; /* Image below text */
+    text-align: center;
+    padding: 60px 6%;
+  }
+
+  .hero-text,
+  .intro-text,
+  .hero-content {
+    flex: 1 1 auto;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero,
+  .hero-section,
+  .intro-section,
+  .first-section {
+    padding: 50px 7%;
+    gap: 25px;
+  }
+
+  .hero-image img,
+  .profile-image img,
+  .intro-image img {
+    width: min(85vw, 300px);
+  }
+}  
+  
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Nishmith</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Dig. Mfg</a></li>
+    <li><a href="#cad">CAD</a></li>
+    <li><a href="#badges">Badges</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#experience" class="mobile-link">Experience</a>
+  <a href="#skills" class="mobile-link">Digital Manufacturing</a>
+  <a href="#cad" class="mobile-link">Computer Aided Design</a>
+  <a href="#badges" class="mobile-link">Badges</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-left">
+    <span class="hero-tag">Mechanical Engineer</span>
+    <h1 class="hero-name">
+      Nishmith.D<br>
+    </h1>
+    <p class="hero-desc">
+      Mechanical Design &amp; Manufacturing Engineer specializing in CAD/CAM, Digital Manufacturing, and Industry 4.0 — turning complex engineering problems into elegant digital solutions.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary"><span>Get in Touch</span></a>
+      <a href="#projects" class="btn-outline">View Work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="photo-frame">
+      <!-- PHOTO PLACEHOLDER: Replace div below with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;" /> -->
+      <img src="images/photo.jpeg" style="width:100%;height:100%;object-fit:cover;" />
+    </div>
+  </div>
+
+  <div class="hero-stat-strip">
+    <div class="hero-stat">
+      <div class="hero-stat-num">2<span>+</span></div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3<span>+</span></div>
+      <div class="hero-stat-label">Companies</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">8.5<span>+</span></div>
+      <div class="hero-stat-label">CGPA . JSSATE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left reveal">
+    <span class="section-label">About Me</span>
+    <h2 class="section-title">Design with purpose,<br>Create with passion.</h2>
+    <p class="about-text">
+      I am a <strong>diligent Mechanical Design and Manufacturing Engineer</strong> with practical experience in CAD/CAM, Digital Manufacturing, and Factory Automation.
+      <br><br>
+      Deeply committed to continuous learning, I actively embrace <strong>Industry 4.0 practices</strong> — including digital factory, robotics, and process automation. I thrive in collaborative environments where my problem-solving and team management skills drive impactful project outcomes.
+    </p>
+    <div class="about-highlights">
+      <div class="about-highlight">
+        <div class="about-highlight-val">2<span>+</span></div>
+        <div class="about-highlight-key">Years Experience</div>
+      </div>
+      <div class="about-highlight">
+        <div class="about-highlight-val">3</div>
+        <div class="about-highlight-key">Companies</div>
+      </div>
+      <div class="about-highlight">
+        <div class="about-highlight-val">8.5</div>
+        <div class="about-highlight-key">CGPA . JSSATE</div>
+      </div>
+      <div class="about-highlight">
+        <div class="about-highlight-val">i4<span>.</span>0</div>
+        <div class="about-highlight-key">Industry 4.0 Focus</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal">
+    <p class="about-quote">
+      Turning complex engineering problems into <em>elegant</em> digital solutions.
+    </p>
+    <div class="about-pills">
+      <span class="about-pill">3DExperience</span>
+      <span class="about-pill">CATIA</span>
+      <span class="about-pill">DELMIA</span>
+      <span class="about-pill">CAD / CAM</span>
+      <span class="about-pill">Process Planning</span>
+      <span class="about-pill">Digital Factory</span>
+      <span class="about-pill">CNC Programming</span>
+      <span class="about-pill">Additive Mfg</span>
+      <span class="about-pill">Industry 4.0</span>
+      <span class="about-pill">Automation</span>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY EXPERIENCE -->
+<section id="experience">
+  <div class="exp-header reveal">
+    <div>
+      <span class="section-label">Industry Experience</span>
+      <h2 class="section-title">Where I've worked.</h2>
+    </div>
+    <p class="exp-header-right">
+      A track record across industry-leading platforms — from internship through R&amp;D engineering to industry consulting at Dassault Systèmes.
+    </p>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-year">Dec 2026</div>
+        <div class="exp-type">Consultant</div>
+      </div>
+      <div class="exp-middle">
+        <div class="exp-role">Industry Process Consultant</div>
+        <div class="exp-company">Dassault Systèmes</div>
+        <div class="exp-desc">Solving real-time engineering problems with a project focused on DELMIA Heavy Industry Manufacturing — bridging digital simulation with physical production workflows.</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-num">01</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-year">Apr 2025</div>
+        <div class="exp-type">Full-Time</div>
+      </div>
+      <div class="exp-middle">
+        <div class="exp-role">R&amp;D Engineer</div>
+        <div class="exp-company">Alphaabets Digital Labs</div>
+        <div class="exp-desc">Designed and developed Digital Manufacturing and Digital Factory use cases using the 3DExperience DELMIA platform, contributing to process innovation and workflow automation.</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-num">02</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-year">Oct 2024</div>
+        <div class="exp-type">Intern</div>
+      </div>
+      <div class="exp-middle">
+        <div class="exp-role">R&amp;D Intern</div>
+        <div class="exp-company">Alphaabets Digital Labs</div>
+        <div class="exp-desc">Worked extensively on 3DExperience CATIA and DELMIA — focusing on design-to-manufacturing pipelines and process planning methodologies.</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-num">03</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIGITAL MANUFACTURING -->
+<section id="skills" class="skills-section">
+  <div class="skills-section-header reveal">
+    <div>
+      <span class="section-label">Skills &amp; Expertise</span>
+      <h2 class="section-title">Digital<br>Manufacturing</h2>
+    </div>
+    <p>Specializing in Digital Manufacturing and Industry 4.0 — resolving bottlenecks through digital factory workflows.</p>
+  </div>
+
+  <div class="tile-grid">
+
+    <!-- TILE 1: Manufacturing BOM -->
+    <!-- To add image: replace the .tile-placeholder div with <img class="tile-img" src="your-image.jpg" alt="Manufacturing BOM"> -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/MID.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Manufacturing BOM</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 2: Process Planning -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/Process Planning.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Process Planning</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 3: Plant Layout Design -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/Plant layout design.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Plant Layout Design</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 4: Factory Flow Simulation -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/Factory flow.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Factory Flow Simulation</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 5: CNC Programming -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/NC machining.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">CNC Programming</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 6: Additive Manufacturing Build -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/Additive Manufacturing.png" alt="Manufacturing BOM">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Additive Manufacturing Build</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPUTER AIDED DESIGN -->
+<section id="cad" class="skills-section">
+  <div class="skills-section-header reveal">
+    <div>
+      <span class="section-label">Skills &amp; Expertise</span>
+      <h2 class="section-title">Computer Aided<br>Design</h2>
+    </div>
+    <p>Precise modeling and optimized design solutions — from part modeling and drafting to full assembly evaluation and automotive BIW.</p>
+  </div>
+
+  <div class="tile-grid">
+
+    <!-- TILE 1: Product Modelling -->
+    <!-- To add image: replace the .tile-placeholder div with <img class="tile-img" src="your-image.jpg" alt="Product Modelling"> -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+         <img class="tile-img" src="images/part modelling.png" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Product Modelling</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 2: Assembly Design -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/AD.jpg" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Assembly Design</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 3: Drafting -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/DFT.jpg" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Drafting</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 4: Assembly Evaluation -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/0.jpg" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Assembly Evaluation</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 5: FTA -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/FTA.jpg" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">FTA</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- TILE 6: Automotive BIW -->
+    <div class="tile reveal">
+      <div class="tile-placeholder">
+        <img class="tile-img" src="images/Automotive.png" alt="Product Modelling">
+      </div>
+      <div class="tile-overlay">
+        <span class="tile-label">Automotive BIW</span>
+        <span class="tile-arrow">↗</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BADGES -->
+<section id="badges">
+  <div class="reveal">
+    <span class="section-label">Certifications</span>
+    <h2 class="section-title">Skills &amp; Proficiencies</h2>
+  </div>
+  <p style="color:var(--muted);margin-top:16px;font-size:0.95rem;" class="reveal">
+    Industry-recognized certifications and badges.<br> Click on any badge to learn more.
+  </p>
+
+  <!-- BADGES GRID: 8 slots — replace icon + label per badge, or swap the inner content with <img src="badge.png" style="width:80px;height:80px;object-fit:contain;"> -->
+  <div class="badges-grid">
+
+    <a href="https://www.credly.com/badges/ce57a4c7-a764-43b6-b752-8876eb7178b6/public_url" target="_blank" class="badge-slot reveal">
+  <img src="images/Mechanical designer.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">3DExperience CATIA</span>
+    </a>
+
+    <a href=https://drive.google.com/file/d/173MqR7_c7AwyaUEpxuwMHnvYzLcZaTL9/view?usp=drivesdk" target="_blank" class="badge-slot reveal">
+  <img src="images/Solidedge Associate.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Siemens Solidedge Author</span>
+    </a>
+
+    <a href="https://www.credly.com/badges/3568a3ca-ed26-4c3a-823a-72731d883246" target="_blank" class="badge-slot reveal">
+  <img src="images/Process engineer.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">DELMIA PROCESS ENGG.</span>
+    </a>
+	
+	<a href="https://www.credly.com/badges/7382d328-90a6-4d0c-ba70-1afa6a7f22b9/print" target="_blank" class="badge-slot reveal">
+  <img src="images/Work instructions author.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Work Instructions Author</span>
+    </a>
+
+    <a href="https://www.credly.com/badges/64ee4941-2238-4941-92e0-42cb733eeb1c/print" target="_blank" class="badge-slot reveal">
+  <img src="images/Ergonomic workplace designer.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Ergonomic Workplace Designer</span>
+    </a>
+	
+	<a href="https://www.credly.com/badges/fcf258c3-d9b6-4f7d-9e1b-cb9358fc4d1b/print" target="_blank" class="badge-slot reveal">
+  <img src="images/Plant layout designer.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Plant Layout Designer</span>
+    </a>
+
+    <a href="https://www.credly.com/badges/9c4943ba-bfa8-40b1-a205-925782f62321/print" target="_blank" class="badge-slot reveal">
+  <img src="images/Factory Simulation Engineer.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Factory Simulation Engineer</span>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1gSwhwKWxPWCmeLFJDIQUBVGP3pz-zaAk/view" target="_blank" class="badge-slot reveal">
+  <img src="images/Whitebelt.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Six Sigma Whitebelt</span>
+    </a>
+
+        <a href="https://badges.plus.columbia.edu/929d6f9a-f9f6-4104-807c-b10596e025a0#acc.BuinLj2X" target="_blank" class="badge-slot reveal">
+  <img src="images/Prompt.png" alt="3DExperience CATIA Badge" class="badge-img">
+  <span class="badge-label">Prompt Engineering</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-intro reveal">
+    <div>
+      <span class="section-label">Featured Work</span>
+      <h2 class="section-title">Projects &amp; Use Cases.</h2>
+      <p>Highlighting key projects across Digital Manufacturing, CAD Design, and Factory Simulation.</p>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1: Heavy Industry Manufacturing (Confidential — placeholder slides) -->
+    <div class="project-card reveal">
+      <div class="project-img">
+        <!-- Replace this block with <img src="project1.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="project-img-placeholder">
+          <span class="project-img-icon">🏗️</span>
+          <span>Project - Working on Outfit Manufacturing Domain for <br>"Cochin Shipyard Limited" (Data CONFIDENTIAL) </span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Digital Manufacturing · Real-Time Project</div>
+        <div class="project-title">Heavy Industry Manufacturing</div>
+        <div class="project-desc">Real-time problem solving using DELMIA, Heavy Industry Manufacturing process for All Domain Manufacturing.</div>
+      </div>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">DELMIA</span>
+          <span class="project-tag">Process</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: 3DExperience Digital Factory -->
+    <!-- To add images: replace slider-slide-placeholder divs with <img src="images/yourfile.jpg" alt="..."> -->
+    <div class="project-card reveal">
+      <div class="project-slider" data-slider>
+        <div class="slider-track">
+          <div class="slider-slide">
+            <img src="images/B1.png" alt="...">
+          </div>
+          <div class="slider-slide">
+            <img src="images/B2.png" alt="...">
+          </div>
+          <div class="slider-slide">
+            <img src="images/B3.png" alt="...">
+          </div>
+        </div>
+        <button class="slider-btn prev" aria-label="Previous">&#8592;</button>
+        <button class="slider-btn next" aria-label="Next">&#8594;</button>
+        <div class="slider-dots"></div>
+        <div class="slider-counter">1 / 3</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Digital Factory · Use Case</div>
+        <div class="project-title">3DExperience Digital Factory</div>
+        <div class="project-desc">Developing Digital Manufacturing and Digital Factory use cases on Battery Manufacturing Plant using 3DExperience DELMIA platform — including process planning, plant layout design, factory flow simulations and robotics.</div>
+      </div>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">3DX</span>
+          <span class="project-tag">Simulation</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: Digital Manufacturing Planning -->
+    <div class="project-card reveal">
+      <div class="project-slider" data-slider>
+        <div class="slider-track">
+          <div class="slider-slide">
+            <img src="images/L1.png" alt="...">
+          </div>
+          <div class="slider-slide">
+            <img src="images/L2.png" alt="...">
+          </div>
+          <div class="slider-slide">
+            <img src="images/L3.png" alt="...">
+          </div>
+        </div>
+        <button class="slider-btn prev" aria-label="Previous">&#8592;</button>
+        <button class="slider-btn next" aria-label="Next">&#8594;</button>
+        <div class="slider-dots"></div>
+        <div class="slider-counter">1 / 3</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Digital Factory · Use Case</div>
+        <div class="project-title">Digital Manufacturing Planning</div>
+        <div class="project-desc">Digital Replication of a Landing Gear Assembly workstation of 'Safran Industries' with visual work instructions ensuring efficiency, safety and compliance with quality standards.</div>
+      </div>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">CATIA</span>
+          <span class="project-tag">DELMIA</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left reveal">
+    <span class="section-label">Get In Touch</span>
+    <h2 class="contact-tagline">Let's <span class="accent">collaborate</span> and build something great.</h2>
+    <p class="contact-sub">Open to new opportunities, collaborations, and interesting engineering challenges.</p>
+
+    <div class="contact-links">
+      <a href="mailto:nishmithd27@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">nishmithd27@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/nishmith-d" target="_blank" class="contact-link">
+        <span class="contact-link-icon">in</span>
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">Connect with me →</span>
+      </a>
+      <a href="#" class="contact-link">
+        <span class="contact-link-icon">📷</span>
+        <span class="contact-link-label">Instagram</span>
+        <span class="contact-link-value">Follow me →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-right reveal">
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="John Doe" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="john@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;text-align:center;padding:16px;" onclick="alert('Message sent! (Connect this to a backend or Formspree to enable real sending)')"><span>Send Message ↗</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Nishmith D</span>
+  <span class="footer-copy">© 2026 Nishmith D — Mechanical Engineer</span>
+  <div class="footer-socials">
+    <a href="mailto:nishmithd27@gmail.com" class="footer-social">✉</a>
+    <a href="https://www.linkedin.com/in/nishmith-d" target="_blank" class="footer-social">in</a>
+    <a href="#" class="footer-social">📷</a>
+  </div>
+</footer>
+
+<script>
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // CUSTOM CURSOR
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursor-follower');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 5 + 'px';
+    cursor.style.top = my - 5 + 'px';
+  });
+
+  function animateFollower() {
+    fx += (mx - fx - 18) * 0.12;
+    fy += (my - fy - 18) * 0.12;
+    follower.style.left = fx + 'px';
+    follower.style.top = fy + 'px';
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  document.querySelectorAll('a, button, .skill-card, .badge-slot, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2.5)';
+      follower.style.transform = 'scale(1.6)';
+      follower.style.borderColor = 'rgba(0,212,255,0.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      follower.style.transform = 'scale(1)';
+      follower.style.borderColor = 'rgba(0,212,255,0.4)';
+    });
+  });
+
+  // IMAGE SLIDERS
+  document.querySelectorAll('[data-slider]').forEach(slider => {
+    const track    = slider.querySelector('.slider-track');
+    const slides   = slider.querySelectorAll('.slider-slide');
+    const dotsWrap = slider.querySelector('.slider-dots');
+    const counter  = slider.querySelector('.slider-counter');
+    const btnPrev  = slider.querySelector('.slider-btn.prev');
+    const btnNext  = slider.querySelector('.slider-btn.next');
+    const total    = slides.length;
+    let current    = 0;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      counter.textContent = `${current + 1} / ${total}`;
+      dotsWrap.querySelectorAll('.slider-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current));
+      if (btnPrev) btnPrev.disabled = false;
+      if (btnNext) btnNext.disabled = false;
+    }
+
+    if (btnPrev) btnPrev.addEventListener('click', () => goTo(current - 1));
+    if (btnNext) btnNext.addEventListener('click', () => goTo(current + 1));
+
+    // Touch swipe support
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+  });
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ACTIVE NAV
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
