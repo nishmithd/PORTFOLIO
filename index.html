@@ -18,11 +18,11 @@
     --muted: #6b7a8d;
     --heading: #ffffff;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     background: var(--bg);
     color: var(--text);
@@ -31,7 +31,7 @@
     overflow-x: hidden;
     cursor: none;
   }
-
+ 
   /* Restore normal cursor on touch devices */
   @media (hover: none) {
     body, a, button, .tile, .contact-link, .btn-primary, .btn-outline,
@@ -46,11 +46,11 @@
   z-index: 1;
   transition: transform 0.3s ease;
 }
-
+ 
 .badge-slot:hover .badge-img {
   transform: scale(1.08);
 }
-
+ 
   /* CUSTOM CURSOR */
   .cursor {
     width: 10px; height: 10px;
@@ -73,7 +73,7 @@
     mix-blend-mode: screen;
   }
   body:hover .cursor { opacity: 1; }
-
+ 
   /* NOISE OVERLAY */
   body::before {
     content: '';
@@ -83,12 +83,12 @@
     z-index: 1000;
     opacity: 0.4;
   }
-
+ 
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-
+ 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
@@ -100,12 +100,12 @@
     border-bottom: 1px solid var(--border);
     animation: slideDown 0.8s ease forwards;
   }
-
+ 
   @keyframes slideDown {
     from { transform: translateY(-100%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
-
+ 
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -115,7 +115,7 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--accent); }
-
+ 
   .nav-links {
     display: flex; gap: 40px; list-style: none;
   }
@@ -137,16 +137,18 @@
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
-
+ 
   /* HERO */
   #hero {
-    min-height: 100vh;
+    min-height: 100svh;
+    width: 100%;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr auto;
     position: relative;
   }
-
+ 
   .hero-grid-bg {
     position: absolute; inset: 0;
     background-image:
@@ -155,14 +157,14 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   }
-
+ 
   .hero-left {
     display: flex; flex-direction: column;
     justify-content: center;
     padding: 140px 60px 120px;
     position: relative; z-index: 2;
   }
-
+ 
   .hero-tag {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.75rem;
@@ -178,14 +180,18 @@
     width: 24px; height: 1px;
     background: var(--accent);
   }
-
+ 
   .hero-name {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-size: clamp(1.1rem, 4.5vw, 6rem);
     font-weight: 800;
-    line-height: 0.95;
+    line-height: 1.0;
     color: var(--heading);
     letter-spacing: -0.02em;
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: nowrap;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.5s forwards;
   }
@@ -193,7 +199,7 @@
     color: transparent;
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
-
+ 
   .hero-desc {
     margin-top: 28px;
     font-size: 1rem;
@@ -203,14 +209,14 @@
     opacity: 0;
     animation: fadeUp 0.8s ease 0.7s forwards;
   }
-
+ 
   .hero-ctas {
     display: flex; gap: 16px;
     margin-top: 44px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.9s forwards;
   }
-
+ 
   .btn-primary {
     padding: 14px 32px;
     background: var(--accent);
@@ -238,7 +244,7 @@
   .btn-primary:hover::before { transform: scaleX(1); }
   .btn-primary span { position: relative; z-index: 1; }
   .btn-primary:hover { color: var(--bg); }
-
+ 
   .btn-outline {
     padding: 14px 32px;
     background: transparent;
@@ -257,7 +263,7 @@
     border-color: var(--accent);
     color: var(--accent);
   }
-
+ 
   .hero-right {
     position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -266,7 +272,7 @@
     opacity: 0;
     animation: fadeIn 1.2s ease 0.6s forwards;
   }
-
+ 
   /* PHOTO PLACEHOLDER */
   .photo-frame {
     width: 340px; height: 420px;
@@ -298,9 +304,9 @@
     z-index: 1;
   }
   .photo-placeholder-text { z-index: 1; }
-
+ 
   @keyframes spin { to { transform: rotate(360deg); } }
-
+ 
   .photo-frame::before {
     content: '';
     position: absolute;
@@ -309,7 +315,7 @@
     border: 1px solid rgba(0,212,255,0.2);
     z-index: -1;
   }
-
+ 
   .hero-stat-strip {
     grid-column: 1 / -1;
     display: grid; grid-template-columns: repeat(3,1fr);
@@ -336,7 +342,7 @@
     color: var(--muted);
     margin-top: 4px;
   }
-
+ 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -345,10 +351,10 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
+ 
   /* SECTIONS COMMON */
   section { padding: 120px 60px; position: relative; }
-
+ 
   .section-label {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 0.72rem;
@@ -362,7 +368,7 @@
     width: 20px; height: 1px;
     background: var(--accent);
   }
-
+ 
   .section-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp(2rem, 4vw, 3.2rem);
@@ -371,7 +377,7 @@
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
-
+ 
   /* ABOUT */
   #about {
     background: var(--surface);
@@ -380,9 +386,9 @@
     gap: 100px;
     align-items: center;
   }
-
+ 
   .about-left { }
-
+ 
   .about-text {
     margin-top: 28px;
     line-height: 1.9;
@@ -390,7 +396,7 @@
     font-size: 1.05rem;
   }
   .about-text strong { color: var(--text); font-weight: 500; }
-
+ 
   .about-highlights {
     margin-top: 40px;
     display: grid;
@@ -418,13 +424,13 @@
     color: var(--muted);
     margin-top: 4px;
   }
-
+ 
   .about-right {
     display: flex;
     flex-direction: column;
     gap: 28px;
   }
-
+ 
   /* big quote / tagline in about-right */
   .about-quote {
     font-family: 'Syne', sans-serif;
@@ -439,7 +445,7 @@
     color: transparent;
     -webkit-text-stroke: 1px rgba(0,212,255,0.5);
   }
-
+ 
   .about-pills {
   display: flex;
   flex-wrap: wrap;
@@ -459,13 +465,13 @@
   max-width: 100%;
 }
   .about-pill:hover { border-color: var(--accent); color: var(--accent); }
-
+ 
   /* EXPERIENCE — standalone section */
   #experience {
     background: var(--bg);
     padding: 110px 60px;
   }
-
+ 
   .exp-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -478,9 +484,9 @@
     line-height: 1.7;
     color: var(--muted);
   }
-
+ 
   .exp-list { display: flex; flex-direction: column; }
-
+ 
   .exp-item {
     display: grid;
     grid-template-columns: 140px 1fr auto;
@@ -492,7 +498,7 @@
     align-items: start;
   }
   .exp-item:first-child { border-top: 1px solid var(--border); }
-
+ 
   .exp-item::before {
     content: '';
     position: absolute;
@@ -502,7 +508,7 @@
     transition: width 0.4s ease;
   }
   .exp-item:hover::before { width: 100%; }
-
+ 
   .exp-left { }
   .exp-year {
     font-family: 'Syne', sans-serif;
@@ -523,7 +529,7 @@
     display: inline-block;
     margin-top: 6px;
   }
-
+ 
   .exp-middle { }
   .exp-role {
     font-family: 'Syne', sans-serif;
@@ -546,7 +552,7 @@
     color: var(--muted);
     max-width: 520px;
   }
-
+ 
   .exp-right {
     text-align: right;
     padding-top: 4px;
@@ -562,7 +568,7 @@
     user-select: none;
   }
   .exp-item:hover .exp-num { color: rgba(0,212,255,0.08); }
-
+ 
   /* SKILLS — two sub-sections */
   .skills-section {
     background: var(--bg);
@@ -572,7 +578,7 @@
     background: var(--surface);
     padding-top: 80px;
   }
-
+ 
   .skills-section-header {
     display: flex;
     align-items: flex-end;
@@ -588,14 +594,14 @@
     max-width: 340px;
     text-align: right;
   }
-
+ 
   /* IMAGE TILE GRID */
   .tile-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3px;
   }
-
+ 
   .tile {
     position: relative;
     aspect-ratio: 4/3;
@@ -605,7 +611,7 @@
     background: var(--surface2);
     border: 1px solid var(--border);
   }
-
+ 
   /* Image placeholder — swap with real <img> */
   .tile-img {
     width: 100%; height: 100%;
@@ -614,7 +620,7 @@
     transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
   }
   .tile:hover .tile-img { transform: scale(1.06); }
-
+ 
   /* Placeholder shown when no real image yet */
   .tile-placeholder {
     width: 100%; height: 100%;
@@ -625,21 +631,21 @@
     transition: background 0.3s;
   }
   .tile:hover .tile-placeholder { background: var(--surface); }
-
+ 
   .tile-placeholder-icon {
     font-size: 2.2rem;
     opacity: 0.25;
     transition: opacity 0.3s;
   }
   .tile:hover .tile-placeholder-icon { opacity: 0.45; }
-
+ 
   .tile-placeholder-hint {
     font-size: 0.65rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(107,122,141,0.35);
   }
-
+ 
   /* Overlay label — always visible at bottom */
   .tile-overlay {
     position: absolute;
@@ -653,7 +659,7 @@
     transition: transform 0.35s ease;
   }
   .tile:hover .tile-overlay { transform: translateY(0); }
-
+ 
   .tile-label {
     font-family: 'Syne', sans-serif;
     font-size: 0.88rem;
@@ -661,7 +667,7 @@
     color: var(--heading);
     letter-spacing: 0.01em;
   }
-
+ 
   .tile-arrow {
     font-size: 0.9rem;
     color: var(--accent);
@@ -673,7 +679,7 @@
     opacity: 1;
     transform: translate(0, 0);
   }
-
+ 
   /* Top accent line on hover */
   .tile::after {
     content: '';
@@ -686,17 +692,17 @@
     transition: transform 0.4s ease;
   }
   .tile:hover::after { transform: scaleX(1); }
-
+ 
   /* BADGES */
   #badges { background: var(--surface); overflow: hidden; }
-
+ 
   .badges-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2px;
     margin-top: 56px;
   }
-
+ 
   .badge-slot {
     aspect-ratio: 1;
     background: var(--surface2);
@@ -719,14 +725,14 @@
   }
   .badge-slot:hover::before { opacity: 1; }
   .badge-slot:hover { border-color: rgba(0,212,255,0.3); }
-
+ 
   .badge-icon {
     font-size: 2.5rem;
     filter: grayscale(0.6);
     transition: filter 0.3s;
   }
   .badge-slot:hover .badge-icon { filter: grayscale(0); }
-
+ 
   .badge-label {
     font-size: 0.72rem;
     letter-spacing: 0.1em;
@@ -737,7 +743,7 @@
     transition: color 0.3s;
   }
   .badge-slot:hover .badge-label { color: var(--accent); }
-
+ 
   .badge-placeholder-text {
     font-size: 0.65rem;
     letter-spacing: 0.15em;
@@ -746,10 +752,10 @@
     position: absolute;
     bottom: 14px;
   }
-
+ 
   /* PROJECTS */
   #projects { background: var(--bg); }
-
+ 
   .projects-intro {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -763,13 +769,13 @@
     margin-top: 16px;
     max-width: 400px;
   }
-
+ 
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
-
+ 
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -779,7 +785,7 @@
     transition: border-color 0.3s;
   }
   .project-card:hover { border-color: rgba(0,212,255,0.3); }
-
+ 
 /* PROJECT IMAGE SLIDER */
 .project-slider {
   width: 100%;
@@ -788,21 +794,21 @@
   overflow: hidden;
   background: var(--surface2);
 }
-
+ 
 .slider-track {
   display: flex;
   height: 100%;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
-
+ 
 .slider-slide {
   min-width: 100%;
   height: 100%;
   flex-shrink: 0;
   position: relative;
 }
-
+ 
 .slider-slide img {
   width: 100%;
   height: 100%;
@@ -812,7 +818,7 @@
   user-select: none;
   -webkit-user-drag: none;
 }
-
+ 
 /* Placeholder slide (no image yet) */
 .slider-slide-placeholder {
   width: 100%;
@@ -832,7 +838,7 @@
   text-transform: uppercase;
   opacity: 0.4;
 }
-
+ 
 /* Prev / Next arrow buttons */
 .slider-btn {
   position: absolute;
@@ -854,7 +860,7 @@
 .slider-btn.prev { left: 12px; }
 .slider-btn.next { right: 12px; }
 .slider-btn:disabled { opacity: 0 !important; pointer-events: none; }
-
+ 
 /* Dot indicators */
 .slider-dots {
   position: absolute;
@@ -875,7 +881,7 @@
   background: var(--accent);
   transform: scale(1.3);
 }
-
+ 
 /* Slide counter badge */
 .slider-counter {
   position: absolute;
@@ -889,14 +895,14 @@
   z-index: 10;
   font-family: 'Syne', sans-serif;
 }
-
+ 
 /* Mobile touch swipe — no arrows needed, dots stay */
 @media (max-width: 768px) {
   .project-slider { height: clamp(200px, 55vw, 320px); }
   .slider-btn { display: none; }
   .slider-dots { opacity: 1; }
 }
-
+ 
   .project-img {
     height: 200px;
     background: var(--surface2);
@@ -909,7 +915,7 @@
     position: absolute; inset: 0;
     background: linear-gradient(to bottom, transparent 40%, var(--surface));
   }
-
+ 
   .project-img-placeholder {
     font-size: 0.72rem;
     letter-spacing: 0.15em;
@@ -919,9 +925,9 @@
     align-items: center; gap: 10px;
   }
   .project-img-icon { font-size: 2.5rem; opacity: 0.3; }
-
+ 
   .project-body { padding: 24px 28px 32px; }
-
+ 
   .project-category {
     font-size: 0.7rem;
     letter-spacing: 0.16em;
@@ -941,7 +947,7 @@
     line-height: 1.65;
     color: var(--muted);
   }
-
+ 
   .project-footer {
     padding: 16px 28px;
     border-top: 1px solid var(--border);
@@ -962,7 +968,7 @@
     transition: transform 0.2s;
   }
   .project-card:hover .project-arrow { transform: translate(3px,-3px); }
-
+ 
   /* CONTACT */
   #contact {
     background: var(--surface);
@@ -971,7 +977,7 @@
     gap: 80px;
     align-items: center;
   }
-
+ 
   .contact-left {}
   .contact-tagline {
     font-family: 'Syne', sans-serif;
@@ -988,7 +994,7 @@
     line-height: 1.7;
     color: var(--muted);
   }
-
+ 
   .contact-links {
     margin-top: 40px;
     display: flex; flex-direction: column; gap: 16px;
@@ -1014,11 +1020,11 @@
     text-transform: uppercase;
   }
   .contact-link-value { margin-left: auto; font-size: 0.85rem; color: var(--muted); }
-
+ 
   .contact-right { }
-
+ 
   .contact-form { display: flex; flex-direction: column; gap: 16px; }
-
+ 
   .form-group { display: flex; flex-direction: column; gap: 8px; }
   .form-label {
     font-size: 0.72rem;
@@ -1040,7 +1046,7 @@
   }
   .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
   .form-textarea { height: 130px; }
-
+ 
   /* FOOTER */
   footer {
     background: var(--bg);
@@ -1076,7 +1082,7 @@
     border-color: var(--accent);
     color: var(--accent);
   }
-
+ 
   /* REVEAL ANIMATION */
   .reveal {
     opacity: 0;
@@ -1087,7 +1093,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-
+ 
   /* HAMBURGER — mobile only */
   .nav-hamburger {
     display: none;
@@ -1108,7 +1114,7 @@
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
+ 
   .nav-mobile-menu {
     display: none;
     position: fixed;
@@ -1134,284 +1140,137 @@
   }
   .nav-mobile-menu a:last-child { border-bottom: none; }
   .nav-mobile-menu a:hover { color: var(--accent); }
-
-@media (max-width: 1200px) {
+ 
+/* ── TABLET/SMALL LAPTOP: single column, photo below text ── */
+@media (max-width: 1100px) {
   #hero {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
-    text-align: center;
   }
-
   .hero-left {
-    padding: 140px 40px 60px;
+    padding: 120px 48px 40px;
     align-items: center;
     text-align: center;
   }
-
-  .hero-tag {
-    justify-content: center;
-  }
-
-  .hero-desc {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-ctas {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
+  .hero-tag { justify-content: center; }
+  .hero-desc { max-width: 560px; margin: 24px auto 0; }
+  .hero-ctas { justify-content: center; flex-wrap: wrap; }
   .hero-right {
-    padding-top: 20px;
-    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 48px 40px;
   }
-
   .photo-frame {
-    width: min(70vw, 340px);
+    width: min(60vw, 280px);
     height: auto;
     aspect-ratio: 4 / 5;
   }
-
-  .hero-stat-strip {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .photo-frame::before { display: none; }
+  .hero-stat-strip { grid-template-columns: repeat(3, 1fr); }
+  .hero-stat { padding: 20px 28px; }
 }
-
-  /* TABLET — 768px to 900px */
-  @media (max-width: 900px) {
-    nav { padding: 18px 28px; }
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-
-    section { padding: 72px 28px; }
-
-    #hero {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr auto;
-      min-height: 100svh;
-    }
-    .hero-left { padding: 120px 28px 60px; }
-    .hero-right { display: none; }
-    .hero-stat-strip { grid-template-columns: repeat(3,1fr); }
-    .hero-stat { padding: 20px 24px; }
-
-    #about { grid-template-columns: 1fr; gap: 48px; }
-    .about-highlights { grid-template-columns: 1fr 1fr; }
-    .about-quote { font-size: clamp(1.2rem, 4vw, 1.6rem); }
-
-    #experience { padding: 72px 28px; }
-    .exp-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
-    .exp-item { grid-template-columns: 100px 1fr; gap: 24px; padding: 28px 0; }
-    .exp-right { display: none; }
-    .exp-desc { max-width: 100%; }
-
-    .skills-section { padding: 72px 28px; }
-    .skills-section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .skills-section-header p { text-align: left; max-width: 100%; }
-    .tile-grid { grid-template-columns: repeat(2, 1fr); }
-
-    .badges-grid { grid-template-columns: repeat(2, 1fr); }
-
-    #projects { padding: 72px 28px; }
-    .projects-intro { grid-template-columns: 1fr; gap: 0; }
-    .projects-grid { grid-template-columns: 1fr; }
-
-    #contact { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
-    .contact-link-value { display: none; }
-
-    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 28px; }
-  }
-
-  /* MOBILE — up to 480px */
-  @media (max-width: 480px) {
-    nav { padding: 16px 20px; }
-    section { padding: 60px 20px; }
-
-    .hero-left { padding: 100px 20px 50px; }
-    .hero-name { font-size: clamp(2.8rem, 14vw, 4rem); }
-    .hero-stat-strip { grid-template-columns: 1fr 1fr 1fr; }
-    .hero-stat { padding: 16px 12px; }
-    .hero-stat-num { font-size: 1.4rem; }
-    .hero-stat-label { font-size: 0.62rem; }
-    .hero-ctas { flex-direction: column; }
-    .btn-primary, .btn-outline { text-align: center; }
-
-    #about { padding: 60px 20px; }
-    .about-highlights { grid-template-columns: 1fr 1fr; gap: 2px; }
-
-    #experience { padding: 60px 20px; }
-    .exp-item { grid-template-columns: 1fr; gap: 10px; }
-    .exp-left { display: flex; align-items: center; gap: 12px; }
-
-    .skills-section { padding: 60px 20px; }
-    .tile-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .tile { min-height: 130px; }
-    .tile-label { font-size: 0.75rem; }
-
-    .badges-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-
-    #projects { padding: 60px 20px; }
-    .projects-grid { grid-template-columns: 1fr; gap: 2px; }
-
-    #contact { padding: 60px 20px; gap: 40px; }
-    .contact-tagline { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-
-    footer { padding: 28px 20px; gap: 14px; }
-    .footer-copy { font-size: 0.7rem; }
-
-    .nav-mobile-menu { top: 61px; }
-  }
-  
-/* HERO SECTION FULL RESPONSIVE FIX */
-.hero,
-.hero-section,
-.intro-section,
-.first-section {
-  display: flex;
-  flex-wrap: wrap; /* Allows stacking on smaller screens */
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  width: 100%;
-  padding: 80px 5%;
-  overflow: hidden;
+ 
+/* ── TABLET ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 28px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+ 
+  section { padding: 72px 28px; }
+ 
+  .hero-left { padding: 100px 32px 36px; }
+  .hero-right { padding: 0 32px 36px; }
+  .photo-frame { width: min(55vw, 240px); }
+  .hero-stat { padding: 18px 16px; }
+  .hero-stat-num { font-size: 1.6rem; }
+ 
+  #about { grid-template-columns: 1fr; gap: 48px; }
+  .about-highlights { grid-template-columns: 1fr 1fr; }
+  .about-quote { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+ 
+  #experience { padding: 72px 28px; }
+  .exp-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
+  .exp-item { grid-template-columns: 100px 1fr; gap: 24px; padding: 28px 0; }
+  .exp-right { display: none; }
+  .exp-desc { max-width: 100%; }
+ 
+  .skills-section { padding: 72px 28px; }
+  .skills-section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .skills-section-header p { text-align: left; max-width: 100%; }
+  .tile-grid { grid-template-columns: repeat(2, 1fr); }
+ 
+  .badges-grid { grid-template-columns: repeat(2, 1fr); }
+ 
+  #projects { padding: 72px 28px; }
+  .projects-intro { grid-template-columns: 1fr; gap: 0; }
+  .projects-grid { grid-template-columns: 1fr; }
+ 
+  #contact { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
+  .contact-link-value { display: none; }
+ 
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 28px; }
 }
-
-/* TEXT SIDE */
-.hero-text,
-.intro-text,
-.hero-content {
-  flex: 1 1 500px;
-  min-width: 280px;
-  max-width: 100%;
-}
-
-.hero-text h1,
-.intro-text h1,
-.hero-content h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem); /* Auto scales */
-  line-height: 1.1;
-  word-wrap: break-word;
-}
-
-.hero-text p,
-.intro-text p,
-.hero-content p {
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  line-height: 1.6;
-  max-width: 100%;
-}
-
-/* PROFILE IMAGE SIDE */
-.hero-image,1983
-.profile-image,
-.intro-image {
-  flex: 1 1 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 250px;
-  max-width: 100%;
-}
-
-.hero-image img,
-.profile-image img,
-.intro-image img {
-  width: min(100%, 380px);
-  height: auto;
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-}
-
-/* TABLET */
-@media (max-width: 992px) {
-  .hero,
-  .hero-section,
-  .intro-section,
-  .first-section {
-    flex-direction: column-reverse; /* Image below text */
-    text-align: center;
-    padding: 60px 6%;
-  }
-
-  .hero-text,
-  .intro-text,
-  .hero-content {
-    flex: 1 1 auto;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero,
-  .hero-section,
-  .intro-section,
-  .first-section {
-    padding: 50px 7%;
-    gap: 25px;
-  }
-
-  .hero-image img,
-  .profile-image img,
-  .intro-image img {
-    width: min(85vw, 300px);
-  }
-}  
-    /* FORM SUCCESS / ERROR STATES */
-  .form-success {
-    display: flex;
-    flex-direction: column;
+ 
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  nav { padding: 15px 20px; }
+  .nav-mobile-menu { top: 56px; }
+  section { padding: 60px 20px; }
+ 
+  .hero-left {
+    padding: 88px 20px 28px;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 56px 32px;
-    border: 1px solid rgba(0,212,255,0.2);
-    background: var(--surface2);
-    min-height: 360px;
   }
-  .form-success-icon {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent);
-    font-size: 1.4rem;
-    margin-bottom: 20px;
+  .hero-tag { justify-content: center; }
+  .hero-desc { font-size: 0.9rem; max-width: 100%; }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 28px;
   }
-  .form-success-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--heading);
-    margin-bottom: 10px;
-  }
-  .form-success-sub {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 280px;
-  }
-  .form-error-banner {
-    padding: 12px 16px;
-    border: 1px solid rgba(255,80,80,0.3);
-    background: rgba(255,80,80,0.06);
-    color: #ff6b6b;
-    font-size: 0.82rem;
-    line-height: 1.5;
-    display: none;
-    margin-bottom: 4px;
-  }
-  #submitBtn[disabled] { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
-
-
+  .btn-primary, .btn-outline { text-align: center; padding: 13px 20px; }
+ 
+  .hero-right { padding: 0 20px 28px; }
+  .photo-frame { width: min(50vw, 190px); }
+ 
+  .hero-stat-strip { grid-template-columns: repeat(3, 1fr); }
+  .hero-stat { padding: 12px 8px; }
+  .hero-stat-num { font-size: 1.2rem; }
+  .hero-stat-label { font-size: 0.56rem; letter-spacing: 0.05em; }
+ 
+  #about { padding: 60px 20px; }
+  .about-highlights { grid-template-columns: 1fr 1fr; gap: 2px; }
+ 
+  #experience { padding: 60px 20px; }
+  .exp-item { grid-template-columns: 1fr; gap: 10px; }
+  .exp-left { display: flex; align-items: center; gap: 12px; }
+ 
+  .skills-section { padding: 60px 20px; }
+  .tile-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+  .tile { min-height: 130px; }
+  .tile-label { font-size: 0.75rem; }
+ 
+  .badges-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+ 
+  #projects { padding: 60px 20px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+ 
+  #contact { padding: 60px 20px; gap: 40px; }
+  .contact-tagline { font-size: clamp(1.5rem, 7vw, 2rem); }
+ 
+  footer { padding: 28px 20px; gap: 14px; }
+  .footer-copy { font-size: 0.7rem; }
+}
+ 
+</style>
+</head>
 <body>
-
+ 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="cursor-follower"></div>
-
+ 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">Nishmith</a>
@@ -1428,7 +1287,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-
+ 
 <!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobileMenu">
   <a href="#about" class="mobile-link">About</a>
@@ -1439,16 +1298,14 @@
   <a href="#projects" class="mobile-link">Projects</a>
   <a href="#contact" class="mobile-link">Contact</a>
 </div>
-
+ 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-grid-bg"></div>
-
+ 
   <div class="hero-left">
     <span class="hero-tag">Mechanical Engineer</span>
-    <h1 class="hero-name">
-      Nishmith.D<br>
-    </h1>
+    <h1 class="hero-name">Nishmith.D</h1>
     <p class="hero-desc">
       Mechanical Design &amp; Manufacturing Engineer specializing in CAD/CAM, Digital Manufacturing, and Industry 4.0 — turning complex engineering problems into elegant digital solutions.
     </p>
@@ -1457,14 +1314,14 @@
       <a href="#projects" class="btn-outline">View Work</a>
     </div>
   </div>
-
+ 
   <div class="hero-right">
     <div class="photo-frame">
       <!-- PHOTO PLACEHOLDER: Replace div below with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;" /> -->
       <img src="images/photo.jpeg" style="width:100%;height:100%;object-fit:cover;" />
     </div>
   </div>
-
+ 
   <div class="hero-stat-strip">
     <div class="hero-stat">
       <div class="hero-stat-num">2<span>+</span></div>
@@ -1480,7 +1337,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-left reveal">
@@ -1510,7 +1367,7 @@
       </div>
     </div>
   </div>
-
+ 
   <div class="about-right reveal">
     <p class="about-quote">
       Turning complex engineering problems into <em>elegant</em> digital solutions.
@@ -1529,7 +1386,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- INDUSTRY EXPERIENCE -->
 <section id="experience">
   <div class="exp-header reveal">
@@ -1541,9 +1398,9 @@
       A track record across industry-leading platforms — from internship through R&amp;D engineering to industry consulting at Dassault Systèmes.
     </p>
   </div>
-
+ 
   <div class="exp-list">
-
+ 
     <div class="exp-item reveal">
       <div class="exp-left">
         <div class="exp-year">Dec 2026</div>
@@ -1558,7 +1415,7 @@
         <div class="exp-num">01</div>
       </div>
     </div>
-
+ 
     <div class="exp-item reveal">
       <div class="exp-left">
         <div class="exp-year">Apr 2025</div>
@@ -1573,7 +1430,7 @@
         <div class="exp-num">02</div>
       </div>
     </div>
-
+ 
     <div class="exp-item reveal">
       <div class="exp-left">
         <div class="exp-year">Oct 2024</div>
@@ -1588,10 +1445,10 @@
         <div class="exp-num">03</div>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- DIGITAL MANUFACTURING -->
 <section id="skills" class="skills-section">
   <div class="skills-section-header reveal">
@@ -1601,9 +1458,9 @@
     </div>
     <p>Specializing in Digital Manufacturing and Industry 4.0 — resolving bottlenecks through digital factory workflows.</p>
   </div>
-
+ 
   <div class="tile-grid">
-
+ 
     <!-- TILE 1: Manufacturing BOM -->
     <!-- To add image: replace the .tile-placeholder div with <img class="tile-img" src="your-image.jpg" alt="Manufacturing BOM"> -->
     <div class="tile reveal">
@@ -1615,7 +1472,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 2: Process Planning -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1626,7 +1483,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 3: Plant Layout Design -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1637,7 +1494,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 4: Factory Flow Simulation -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1648,7 +1505,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 5: CNC Programming -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1659,7 +1516,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 6: Additive Manufacturing Build -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1670,10 +1527,10 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- COMPUTER AIDED DESIGN -->
 <section id="cad" class="skills-section">
   <div class="skills-section-header reveal">
@@ -1683,9 +1540,9 @@
     </div>
     <p>Precise modeling and optimized design solutions — from part modeling and drafting to full assembly evaluation and automotive BIW.</p>
   </div>
-
+ 
   <div class="tile-grid">
-
+ 
     <!-- TILE 1: Product Modelling -->
     <!-- To add image: replace the .tile-placeholder div with <img class="tile-img" src="your-image.jpg" alt="Product Modelling"> -->
     <div class="tile reveal">
@@ -1697,7 +1554,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 2: Assembly Design -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1708,7 +1565,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 3: Drafting -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1719,7 +1576,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 4: Assembly Evaluation -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1730,7 +1587,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 5: FTA -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1741,7 +1598,7 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- TILE 6: Automotive BIW -->
     <div class="tile reveal">
       <div class="tile-placeholder">
@@ -1752,10 +1609,10 @@
         <span class="tile-arrow">↗</span>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- BADGES -->
 <section id="badges">
   <div class="reveal">
@@ -1765,20 +1622,20 @@
   <p style="color:var(--muted);margin-top:16px;font-size:0.95rem;" class="reveal">
     Industry-recognized certifications and badges.<br> Click on any badge to learn more.
   </p>
-
+ 
   <!-- BADGES GRID: 8 slots — replace icon + label per badge, or swap the inner content with <img src="badge.png" style="width:80px;height:80px;object-fit:contain;"> -->
   <div class="badges-grid">
-
+ 
     <a href="https://www.credly.com/badges/ce57a4c7-a764-43b6-b752-8876eb7178b6/public_url" target="_blank" class="badge-slot reveal">
   <img src="images/Mechanical designer.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">3DExperience CATIA</span>
     </a>
-
+ 
     <a href=https://drive.google.com/file/d/173MqR7_c7AwyaUEpxuwMHnvYzLcZaTL9/view?usp=drivesdk" target="_blank" class="badge-slot reveal">
   <img src="images/Solidedge Associate.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Siemens Solidedge Author</span>
     </a>
-
+ 
     <a href="https://www.credly.com/badges/3568a3ca-ed26-4c3a-823a-72731d883246" target="_blank" class="badge-slot reveal">
   <img src="images/Process engineer.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">DELMIA PROCESS ENGG.</span>
@@ -1788,7 +1645,7 @@
   <img src="images/Work instructions author.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Work Instructions Author</span>
     </a>
-
+ 
     <a href="https://www.credly.com/badges/64ee4941-2238-4941-92e0-42cb733eeb1c/print" target="_blank" class="badge-slot reveal">
   <img src="images/Ergonomic workplace designer.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Ergonomic Workplace Designer</span>
@@ -1798,25 +1655,25 @@
   <img src="images/Plant layout designer.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Plant Layout Designer</span>
     </a>
-
+ 
     <a href="https://www.credly.com/badges/9c4943ba-bfa8-40b1-a205-925782f62321/print" target="_blank" class="badge-slot reveal">
   <img src="images/Factory Simulation Engineer.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Factory Simulation Engineer</span>
     </a>
-
+ 
     <a href="https://drive.google.com/file/d/1gSwhwKWxPWCmeLFJDIQUBVGP3pz-zaAk/view" target="_blank" class="badge-slot reveal">
   <img src="images/Whitebelt.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Six Sigma Whitebelt</span>
     </a>
-
+ 
         <a href="https://badges.plus.columbia.edu/929d6f9a-f9f6-4104-807c-b10596e025a0#acc.BuinLj2X" target="_blank" class="badge-slot reveal">
   <img src="images/Prompt.png" alt="3DExperience CATIA Badge" class="badge-img">
   <span class="badge-label">Prompt Engineering</span>
     </a>
-
+ 
   </div>
 </section>
-
+ 
 <!-- PROJECTS -->
 <section id="projects">
   <div class="projects-intro reveal">
@@ -1826,9 +1683,9 @@
       <p>Highlighting key projects across Digital Manufacturing, CAD Design, and Factory Simulation.</p>
     </div>
   </div>
-
+ 
   <div class="projects-grid">
-
+ 
     <!-- PROJECT 1: Heavy Industry Manufacturing (Confidential — placeholder slides) -->
     <div class="project-card reveal">
       <div class="project-img">
@@ -1851,7 +1708,7 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- PROJECT 2: 3DExperience Digital Factory -->
     <!-- To add images: replace slider-slide-placeholder divs with <img src="images/yourfile.jpg" alt="..."> -->
     <div class="project-card reveal">
@@ -1885,7 +1742,7 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
-
+ 
     <!-- PROJECT 3: Digital Manufacturing Planning -->
     <div class="project-card reveal">
       <div class="project-slider" data-slider>
@@ -1918,17 +1775,17 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-left reveal">
     <span class="section-label">Get In Touch</span>
     <h2 class="contact-tagline">Let's <span class="accent">collaborate</span> and build something great.</h2>
     <p class="contact-sub">Open to new opportunities, collaborations, and interesting engineering challenges.</p>
-
+ 
     <div class="contact-links">
       <a href="mailto:nishmithd27@gmail.com" class="contact-link">
         <span class="contact-link-icon">✉</span>
@@ -1940,73 +1797,33 @@
         <span class="contact-link-label">LinkedIn</span>
         <span class="contact-link-value">Connect with me →</span>
       </a>
-      <a href="#" class="contact-link">
+      <a href="https://www.instagram.com/_nish.003" class="contact-link">
         <span class="contact-link-icon">📷</span>
         <span class="contact-link-label">Instagram</span>
         <span class="contact-link-value">Follow me →</span>
       </a>
     </div>
   </div>
-
+ 
   <div class="contact-right reveal">
-
-    <!-- SUCCESS STATE — shown after submission -->
-    <div class="form-success" id="formSuccess" style="display:none;">
-      <div class="form-success-icon">✓</div>
-      <h3 class="form-success-title">Message Sent!</h3>
-      <p class="form-success-sub">Thanks for reaching out — Nishmith will get back to you soon.</p>
-      <button class="btn-outline" style="margin-top:28px;width:100%;text-align:center;padding:13px;"
-        onclick="document.getElementById('formSuccess').style.display='none';document.getElementById('contactForm').style.display='flex';">
-        Send Another
-      </button>
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Full Name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="abc@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;text-align:center;padding:16px;" onclick="alert('Message sent! (Connect this to a backend or Formspree to enable real sending)')"><span>Send Message ↗</span></button>
     </div>
-
-    <!-- ERROR BANNER — shown on failure -->
-    <div class="form-error-banner" id="formError">
-      ⚠ Something went wrong. Please email directly at
-      <a href="mailto:nishmithd27@gmail.com" style="color:var(--accent);">nishmithd27@gmail.com</a>
-    </div>
-
-    <!--
-      FORMSPREE SETUP — 3 steps:
-      1. Go to https://formspree.io → Sign up free
-      2. Click "New Form" → name it "Portfolio Contact"
-      3. Replace YOUR_FORMSPREE_ID below with your form ID
-         e.g. if endpoint is https://formspree.io/f/abcd1234
-              use action="https://formspree.io/f/abcd1234"
-    -->
-    <form
-      id="contactForm"
-      action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-      method="POST"
-      style="display:flex; flex-direction:column; gap:16px;"
-    >
-      <input type="hidden" name="_replyto" value="nishmithd27@gmail.com" />
-
-      <div class="form-group">
-        <label class="form-label" for="cf-name">Your Name</label>
-        <input id="cf-name" name="name" type="text"
-          class="form-input" placeholder="Full Name" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="cf-email">Email Address</label>
-        <input id="cf-email" name="email" type="email"
-          class="form-input" placeholder="abc@example.com" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="cf-message">Message</label>
-        <textarea id="cf-message" name="message"
-          class="form-textarea" placeholder="Tell me about your project..." required></textarea>
-      </div>
-
-      <button type="submit" id="submitBtn" class="btn-primary" style="width:100%;text-align:center;padding:16px;">
-        <span id="submitLabel">Send Message ↗</span>
-      </button>
-    </form>
-
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Nishmith D</span>
@@ -2014,10 +1831,10 @@
   <div class="footer-socials">
     <a href="mailto:nishmithd27@gmail.com" class="footer-social">✉</a>
     <a href="https://www.linkedin.com/in/nishmith-d" target="_blank" class="footer-social">in</a>
-    <a href="#" class="footer-social">📷</a>
+    <a href="https://www.instagram.com/_nish.003" class="footer-social">📷</a>
   </div>
 </footer>
-
+ 
 <script>
   // HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
@@ -2032,18 +1849,18 @@
       mobileMenu.classList.remove('open');
     });
   });
-
+ 
   // CUSTOM CURSOR
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('cursor-follower');
   let mx = 0, my = 0, fx = 0, fy = 0;
-
+ 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx - 5 + 'px';
     cursor.style.top = my - 5 + 'px';
   });
-
+ 
   function animateFollower() {
     fx += (mx - fx - 18) * 0.12;
     fy += (my - fy - 18) * 0.12;
@@ -2052,7 +1869,7 @@
     requestAnimationFrame(animateFollower);
   }
   animateFollower();
-
+ 
   document.querySelectorAll('a, button, .skill-card, .badge-slot, .project-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.transform = 'scale(2.5)';
@@ -2065,7 +1882,7 @@
       follower.style.borderColor = 'rgba(0,212,255,0.4)';
     });
   });
-
+ 
   // IMAGE SLIDERS
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track    = slider.querySelector('.slider-track');
@@ -2076,7 +1893,7 @@
     const btnNext  = slider.querySelector('.slider-btn.next');
     const total    = slides.length;
     let current    = 0;
-
+ 
     // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
@@ -2085,7 +1902,7 @@
       dot.addEventListener('click', () => goTo(i));
       dotsWrap.appendChild(dot);
     });
-
+ 
     function goTo(index) {
       current = (index + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
@@ -2095,10 +1912,10 @@
       if (btnPrev) btnPrev.disabled = false;
       if (btnNext) btnNext.disabled = false;
     }
-
+ 
     if (btnPrev) btnPrev.addEventListener('click', () => goTo(current - 1));
     if (btnNext) btnNext.addEventListener('click', () => goTo(current + 1));
-
+ 
     // Touch swipe support
     let touchStartX = 0;
     slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
@@ -2107,57 +1924,8 @@
       if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
     });
   });
-
-  // FORMSPREE CONTACT FORM
-  const contactForm = document.getElementById('contactForm');
-  const submitBtn   = document.getElementById('submitBtn');
-  const submitLabel = document.getElementById('submitLabel');
-  const formSuccess = document.getElementById('formSuccess');
-  const formError   = document.getElementById('formError');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Guard: remind if ID not replaced
-      if (contactForm.action.includes('YOUR_FORMSPREE_ID')) {
-        formError.style.display = 'block';
-        formError.innerHTML = '⚠ Formspree not connected yet. Replace <strong>YOUR_FORMSPREE_ID</strong> in the HTML with your actual form ID from <a href="https://formspree.io" target="_blank" style="color:var(--accent)">formspree.io</a>';
-        return;
-      }
-
-      // Loading state
-      submitBtn.disabled = true;
-      submitLabel.textContent = 'Sending…';
-      formError.style.display = 'none';
-
-      try {
-        const res = await fetch(contactForm.action, {
-          method: 'POST',
-          body: new FormData(contactForm),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          // Show success, hide form
-          contactForm.style.display = 'none';
-          formSuccess.style.display = 'flex';
-          contactForm.reset();
-        } else {
-          const data = await res.json();
-          throw new Error(data?.errors?.map(e => e.message).join(', ') || 'Server error');
-        }
-      } catch (err) {
-        formError.style.display = 'block';
-        formError.innerHTML = `⚠ ${err.message || 'Something went wrong.'} Email directly at <a href="mailto:nishmithd27@gmail.com" style="color:var(--accent)">nishmithd27@gmail.com</a>`;
-      } finally {
-        submitBtn.disabled = false;
-        submitLabel.textContent = 'Send Message ↗';
-      }
-    });
-  }
-
-
+ 
+  // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
@@ -2167,9 +1935,9 @@
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
+ 
   reveals.forEach(el => observer.observe(el));
-
+ 
   // ACTIVE NAV
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
